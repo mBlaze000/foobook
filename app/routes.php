@@ -15,3 +15,28 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+Route::get('/books', function() {
+    return 'Here are all the books...';
+});
+Route::get('/books/{category}', function($category) {
+        return 'Here are all the books in the category of '.$category;
+});
+Route::get('/new', function() {
+
+    $view  = '<form method="POST">';
+    $view .= 'Title: <input type="text" name="title">';
+    $view .= '<input type="submit">';
+    $view .= '</form>';
+    return $view;
+
+});
+
+Route::post('/new', function() {
+
+    $input =  Input::all();
+    print_r($input);
+
+});
+Route::get('/practice', function() {
+    echo App::environment();
+});
